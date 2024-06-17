@@ -22,3 +22,13 @@ input_string = "this is a testing string"
 print(keyword_match(keyword, input_string))  # Output: False
 
 pattern = r'(?<=[_\s-])\d+([_\s-]\d+)+(?=[_\s-]|$)|(?<=[_\s])\d+(?=[_\s])'
+
+import re
+
+pattern = r'(?<=[_\s-])\d+(?:[_\s-]\d+)+(?![_\s-])|(?<=[_\s])\d+(?=[_\s])'
+
+for text in inputs:
+    matches = re.findall(pattern, text)
+    if matches:
+        print(matches)
+
