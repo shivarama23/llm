@@ -21,4 +21,4 @@ print(keyword_match(keyword, input_string))  # Output: True
 input_string = "this is a testing string"
 print(keyword_match(keyword, input_string))  # Output: False
 
-pattern = r'(?<=[_\s-])\d+([_\s-]\d+)+(?=[_\s-]|$)'
+pattern = r'(?<=[_\s-])\d+([_\s-]\d+)+(?=[_\s-]|$)|(?<=[_\s])\d+(?=[_\s])'
