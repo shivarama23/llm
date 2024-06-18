@@ -32,3 +32,18 @@ for text in inputs:
     if matches:
         print(matches)
 
+import re
+
+def is_valid_date_format(date_str):
+    # Define the regex pattern for YYYY/MM/DD format
+    pattern = r'^\d{4}/\d{2}/\d{2}$'
+    # Use re.match to check if the string matches the pattern
+    if re.match(pattern, date_str):
+        return True
+    else:
+        return False
+
+# Test the function
+test_dates = ["2024/06/18", "2024/6/18", "24/06/18", "2024-06-18", "20240618"]
+results = {date: is_valid_date_format(date) for date in test_dates}
+results
