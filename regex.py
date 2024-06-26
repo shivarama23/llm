@@ -43,6 +43,35 @@ def is_valid_date_format(date_str):
     else:
         return False
 
+
+def extract_pattern(text):
+    # Regular expression patterns
+    pattern_hyphen = r"(?:(?<=^)|(?<=[-]))\d+[-\s_]\d+(?:(?=$)|(?=[-.]))"
+    pattern_underscore = r"(?:(?<=^)|(?<=[_]))\d+[-\s_]\d+(?:(?=$)|(?=[_.]))"
+    pattern_space = r"(?:(?<=^)|(?<=[\s]))\d+[-\s_]\d+(?:(?=$)|(?=[\s.]))"
+
+    # Finding matches
+    match_hyphen = re.search(pattern_hyphen, text)
+    match_underscore = re.search(pattern_underscore, text)
+    match_space = re.search(pattern_space, text)
+
+    # Extracting the matched patterns
+    output_hyphen = match_hyphen.group() if match_hyphen else None
+    output_underscore = match_underscore.group() if match_underscore else None
+    output_space = match_space.group() if match_space else None
+
+    # combine outputs of all three patterns and return the first match
+
+    if output_underscore:
+        return output_underscore
+    elif output_hyphen:
+        return output_hyphen
+    elif output_space:
+        return output_space
+    else:
+        return None
+
+
 # Test the function
 test_dates = ["2024/06/18", "2024/6/18", "24/06/18", "2024-06-18", "20240618"]
 results = {date: is_valid_date_format(date) for date in test_dates}
