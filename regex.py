@@ -123,3 +123,19 @@ def clean_string(input_string):
 test_string = "calibration certificate_2020061399_23May2024"
 print(clean_string(test_string))  # Output should be "some-test__23May2024"
 
+DEFAULT_DATE = datetime.datetime(2500, 1, 28)
+
+def parse_no_default(dt_str):
+   print('---',dt_str)  
+   dt = parser.parse(dt_str, default=DEFAULT_DATE).date()
+   print('---',dt, dt.day, dt_str.startswith(str(DEFAULT_DATE.day)))
+   if (dt.day == DEFAULT_DATE.day):
+      if not (dt_str.startswith(str(DEFAULT_DATE.day)) or dt_str.endswith(str(DEFAULT_DATE.day))):
+         print('here')
+         return None
+      else:
+         return dt
+   elif dt.year == DEFAULT_DATE.year:
+            return None
+   else:
+      return dt
